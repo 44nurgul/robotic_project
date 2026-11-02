@@ -35,7 +35,8 @@ compile_commands.json
 # IDE / Editor
 # ==========================================
 .vscode/*
-!.vscode/extensions.json
+**/.vscode/*
+**/.vscode/
 .idea/
 *.swp
 *.swo

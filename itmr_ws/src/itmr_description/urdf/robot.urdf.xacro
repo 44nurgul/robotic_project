@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<robot name="itmrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- taban referans noktası -->
+<link name="base_footprint"/>
+
+<!-- gövde -->
+<link name="base_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.4 0.3 0.16" />
+        </geometry>
+        <material name="material_name">
+            <color rgba="0.216 0.255 0.318 1.0" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.4 0.3 0.16" />
+        </geometry>
+    </collision>
+    <inertial>
+        <mass value="5.0" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.048167" ixy="0.0" ixz="0.0" iyy="0.077333" iyz="0.0" izz="0.104167"/>
+    </inertial>
+</link>
+
+<joint name="base_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_link" />
+    <origin xyz="0 0 0.1" rpy="0 0 0" />
+</joint>
+    
+<!-- sağ tekerlek -->
+<link name="wheel_right_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+        <geometry>
+            <cylinder radius="0.06" length="0.04" />
+        </geometry>
+        <material name="wheel_right_material">
+            <color rgba="0.09 0.09 0.09 1.0" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <sphere radius="0.06" />
+        </geometry>
+    </collision>
+    <inertial>
+        <mass value="0.2" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.00020667" ixy="0.0" ixz="0.0" iyy="0.00036000" iyz="0.0" izz="0.00020667"/>    
+    </inertial>
+</link>
+
+<joint name="wheel_right_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="wheel_right_link" />
+    <origin xyz="0 -0.15 -0.04" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+</joint>
+
+<!-- sol tekerlek -->
+<link name="wheel_left_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+        <geometry>
+            <cylinder radius="0.06" length="0.04" />
+        </geometry>
+        <material name="wheel_left_material">
+            <color rgba="0.09 0.09 0.09 1.0" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <sphere radius="0.06" />
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.2" />
+        <inertia ixx="0.00020667" ixy="0.0" ixz="0.0" iyy="0.00036000" iyz="0.0" izz="0.00020667"/>
+    </inertial>
+</link>
+
+<joint name="wheel_left_joint" type="continuous">
+    <parent link="base_link" />
+    <child link="wheel_left_link" />
+    <origin xyz="0 0.15 -0.04" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+</joint>
+
+<!-- ön caster -->
+<link name="front_caster_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <sphere radius="0.025" />
+        </geometry>
+        <material name="caster_material">
+            <color rgba="0.09 0.09 0.09 1.0" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <sphere radius="0.025" />
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.1" />
+        <inertia ixx="0.000025" ixy="0.0" ixz="0.0" iyy="0.000025" iyz="0.0" izz="0.000025"/>
+    </inertial>
+</link>
+
+<joint name="front_caster_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="front_caster_link" />
+    <origin xyz="0.15 0 -0.075" rpy="0 0 0" />
+</joint>
+
+<!-- arka caster -->
+<link name="rear_caster_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <sphere radius="0.025" />
+        </geometry>
+        <material name="caster_material">
+            <color rgba="0.09 0.09 0.09 1.0" />
+        </material>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <sphere radius="0.025" />
+        </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.1" />
+        <inertia ixx="0.000025" ixy="0.0" ixz="0.0" iyy="0.000025" iyz="0.0" izz="0.000025"/>
+    </inertial>
+</link>
+
+<joint name="rear_caster_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="rear_caster_link" />
+    <origin xyz="-0.15 0 -0.075" rpy="0 0 0" />
+</joint>
+
+<!-- SOL BEYAZ FAR -->
+<link name="front_left_white_light_link">
+    <visual>
+        <geometry>
+            <box size="0.01 0.035 0.04"/>
+        </geometry>
+        <material name="headlight_white">
+            <color rgba="1.0 1.0 0.85 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="front_left_white_light_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_left_white_light_link"/>
+    <origin xyz="0.205 0.115 0.045" rpy="0 0 0"/>
+</joint>
+
+<!-- SOL TURUNCU SİNYAL -->
+<link name="front_left_indicator_link">
+    <visual>
+        <geometry>
+            <box size="0.01 0.035 0.03"/>
+        </geometry>
+        <material name="indicator_orange">
+            <color rgba="1.0 0.4 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="front_left_indicator_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_left_indicator_link"/>
+    <origin xyz="0.205 0.115 0.010" rpy="0 0 0"/>
+</joint>
+
+<!-- SAĞ BEYAZ FAR -->
+<link name="front_right_white_light_link">
+    <visual>
+        <geometry>
+            <box size="0.01 0.035 0.04"/>
+        </geometry>
+        <material name="headlight_white">
+            <color rgba="1.0 1.0 0.85 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="front_right_white_light_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_right_white_light_link"/>
+    <origin xyz="0.205 -0.115 0.045" rpy="0 0 0"/>
+</joint>
+
+<!-- SAĞ TURUNCU SİNYAL -->
+<link name="front_right_indicator_link">
+    <visual>
+        <geometry>
+            <box size="0.01 0.035 0.03"/>
+        </geometry>
+        <material name="indicator_orange">
+            <color rgba="1.0 0.4 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="front_right_indicator_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_right_indicator_link"/>
+    <origin xyz="0.205 -0.115 0.010" rpy="0 0 0"/>
+</joint>
+
+<!-- Sol turuncu şerit -->
+<link name="left_accent_link">
+    <visual>
+        <geometry>
+            <box size="0.32 0.004 0.012"/>
+        </geometry>
+        <material name="accent_orange_left">
+            <color rgba="1.0 0.35 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="left_accent_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_accent_link"/>
+    <origin xyz="0 0.152 0.055" rpy="0 0 0"/>
+</joint>
+
+<!-- Sağ turuncu şerit -->
+<link name="right_accent_link">
+    <visual>
+        <geometry>
+            <box size="0.32 0.004 0.012"/>
+        </geometry>
+        <material name="accent_orange_right">
+            <color rgba="1.0 0.35 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="right_accent_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_accent_link"/>
+    <origin xyz="0 -0.152 0.055" rpy="0 0 0"/>
+</joint>
+
+<!-- Ön dekoratif panel -->
+<link name="front_panel_link">
+    <visual>
+        <geometry>
+            <box size="0.006 0.13 0.045"/>
+        </geometry>
+        <material name="front_panel_black">
+            <color rgba="0.035 0.045 0.06 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<joint name="front_panel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_panel_link"/>
+    <origin xyz="0.203 0 0.025" rpy="0 0 0"/>
+</joint>
+
+</robot>

@@ -1,8 +1,7 @@
-
 import os
 
 from launch import LaunchDescription
-from launch.actions import  IncludeLaunchDescription, AppendEnvironmentVariable
+from launch.actions import IncludeLaunchDescription, AppendEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
@@ -20,6 +19,13 @@ def generate_launch_description():
         pkg_path,
         "urdf",
         "robot.urdf.xacro"
+    )
+
+    # --- YENI: Dunya dosyasinin yolu ---
+    world_path = os.path.join(
+        pkg_path,
+        "worlds",
+        "itmr_world.sdf"
     )
 
     # Convert Xacro to URDF
@@ -49,10 +55,11 @@ def generate_launch_description():
             )
         ),
         launch_arguments={
-            "gz_args": "-r empty.sdf",
+            # --- DEGISTI: empty.sdf yerine kendi dunyamiz ---
+            "gz_args": f"-r {world_path}",
             "on_exit_shutdown": "true"
         }.items()
-     )
+    )
 
     spawn_robot = Node(
         package="ros_gz_sim",
@@ -60,7 +67,11 @@ def generate_launch_description():
         output="screen",
         parameters=[{
             "topic": "robot_description",
-            "name": "itmrbot"
+            "name": "itmrbot",
+            # --- YENI: dogma konumu (gerekirse degistirin) ---
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.1
         }]
     )
 
@@ -82,9 +93,7 @@ def generate_launch_description():
         }]
     )
 
-
     return LaunchDescription([
-
         robot_state_publisher,
         gz_resource_path,
         gazebo,

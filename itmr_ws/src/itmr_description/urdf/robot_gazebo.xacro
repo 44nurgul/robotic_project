@@ -174,4 +174,11 @@
     </plugin>
   </gazebo>
 
+  <!-- Eklem durumu plugin'i: tekerleklerin gercek aci/hiz bilgisini yayinlar
+       (kopru ile ROS'ta /joint_states olur, RViz'de tekerlekler doner) -->
+  <gazebo>
+    <plugin filename="gz-sim-joint-state-publisher-system"
+            name="gz::sim::systems::JointStatePublisher"/>
+  </gazebo>
+
 </robot>

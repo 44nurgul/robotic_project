@@ -21,7 +21,7 @@ def generate_launch_description():
         "robot.urdf.xacro"
     )
 
-    # --- YENI: Dunya dosyasinin yolu ---
+    # Dunya dosyasinin yolu 
     world_path = os.path.join(
         pkg_path,
         "worlds",
@@ -68,19 +68,20 @@ def generate_launch_description():
         parameters=[{
             "topic": "robot_description",
             "name": "itmrbot",
-            # --- YENI: dogma konumu (gerekirse degistirin) ---
+            #YENI: dogma konumu
             "x": 0.0,
             "y": 0.0,
             "z": 0.1
         }]
     )
 
-    joint_state_publisher = Node(
-        package="joint_state_publisher",
-        executable="joint_state_publisher",
+    # Gazebo <-> ROS 2 koprusu (topic esleme tablosu config/gz_bridge.yaml icinde)
+    bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
         output="screen",
         parameters=[{
-            "use_sim_time": True
+            "config_file": os.path.join(pkg_path, "config", "gz_bridge.yaml")
         }]
     )
 
@@ -98,6 +99,6 @@ def generate_launch_description():
         gz_resource_path,
         gazebo,
         spawn_robot,
-        joint_state_publisher,
+        bridge,
         rviz
     ])

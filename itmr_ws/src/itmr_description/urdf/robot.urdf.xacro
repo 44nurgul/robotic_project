@@ -2,6 +2,16 @@
 <robot name="itmrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find itmr_description)/urdf/robot_gazebo.xacro" />
+<xacro:include filename="$(find itmr_description)/urdf/sensors/lidar.xacro"/>
+<xacro:include filename="$(find itmr_description)/urdf/sensors/camera.xacro"/>
+<xacro:include filename="$(find itmr_description)/urdf/sensors/imu.xacro"/>
+<xacro:include filename="$(find itmr_description)/urdf/sensors/unknown.xacro"/>
+
+<!-- Sensörleri robota bağla -->
+<xacro:lidar parent="base_link"/>
+<xacro:camera parent="base_link"/>
+<xacro:imu parent="base_link"/>
+<xacro:unknown parent="base_link"/>
 
 <!-- taban referans noktası -->
 <link name="base_footprint"/>

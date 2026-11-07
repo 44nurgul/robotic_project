@@ -34,6 +34,10 @@
       <shadows>true</shadows>
     </scene>
 
+    <atmosphere type="adiabatic">
+      <temperature>300</temperature>
+    </atmosphere>
+
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
       <pose>0 0 10 0 0 0</pose>
@@ -154,7 +158,10 @@
       <link name="link">
         <collision name="c"><geometry><sphere><radius>0.3</radius></sphere></geometry></collision>
         <visual name="v"><geometry><sphere><radius>0.3</radius></sphere></geometry>
-          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material></visual>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>360.0</temperature>
+          </plugin></visual>
       </link>
     </model>
 
@@ -163,7 +170,10 @@
       <link name="link">
         <collision name="c"><geometry><box><size>0.45 0.45 0.45</size></box></geometry></collision>
         <visual name="v"><geometry><box><size>0.45 0.45 0.45</size></box></geometry>
-          <material><ambient>0 0.2 1 1</ambient><diffuse>0 0.2 1 1</diffuse></material></visual>
+          <material><ambient>0 0.2 1 1</ambient><diffuse>0 0.2 1 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>320.0</temperature>
+          </plugin></visual>
       </link>
     </model>
 
@@ -172,7 +182,10 @@
       <link name="link">
         <collision name="c"><geometry><cylinder><radius>0.225</radius><length>0.75</length></cylinder></geometry></collision>
         <visual name="v"><geometry><cylinder><radius>0.225</radius><length>0.75</length></cylinder></geometry>
-          <material><ambient>0 0.8 0 1</ambient><diffuse>0 0.8 0 1</diffuse></material></visual>
+          <material><ambient>0 0.8 0 1</ambient><diffuse>0 0.8 0 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>280.0</temperature>
+          </plugin></visual>
       </link>
     </model>
 

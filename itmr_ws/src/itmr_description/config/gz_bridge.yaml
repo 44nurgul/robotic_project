@@ -63,3 +63,17 @@
   ros_type_name: sensor_msgs/msg/CameraInfo
   gz_type_name: gz.msgs.CameraInfo
   direction: GZ_TO_ROS
+
+# Termal kamera goruntusu: Gazebo -> ROS
+- ros_topic_name: /thermal/image_raw
+  gz_topic_name: /thermal/image_raw
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+
+# Termal kamera bilgisi: Gazebo -> ROS
+- ros_topic_name: /thermal/camera_info
+  gz_topic_name: /thermal/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: gz.msgs.CameraInfo
+  direction: GZ_TO_ROS

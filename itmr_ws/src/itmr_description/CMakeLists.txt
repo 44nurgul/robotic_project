@@ -25,7 +25,7 @@ endif()
 
 
 install(
-  DIRECTORY urdf launch meshes worlds config
+  DIRECTORY urdf launch meshes worlds config rviz
   DESTINATION share/${PROJECT_NAME}
 )
 

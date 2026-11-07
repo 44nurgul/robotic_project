@@ -36,6 +36,7 @@
 
     <atmosphere type="adiabatic">
       <temperature>300</temperature>
+      <temperature_gradient>0.1</temperature_gradient>
     </atmosphere>
 
     <light type="directional" name="sun">
@@ -60,6 +61,11 @@
             <ambient>0.75 0.75 0.7 1</ambient>
             <diffuse>0.75 0.75 0.7 1</diffuse>
           </material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/thermal_floor.png</heat_signature>
+            <min_temp>290.0</min_temp>
+            <max_temp>305.0</max_temp>
+          </plugin>
         </visual>
       </link>
     </model>
@@ -70,19 +76,43 @@
       <link name="link">
         <collision name="north_c"><pose>0 7.6125 0.5625 0 0 0</pose><geometry><box><size>15.45 0.225 1.125</size></box></geometry></collision>
         <visual name="north_v"><pose>0 7.6125 0.5625 0 0 0</pose><geometry><box><size>15.45 0.225 1.125</size></box></geometry>
-          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material></visual>
+          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/thermal_wall.jpg</heat_signature>
+            <min_temp>292.0</min_temp>
+            <max_temp>310.0</max_temp>
+          </plugin>
+        </visual>
 
         <collision name="south_c"><pose>0 -7.6125 0.5625 0 0 0</pose><geometry><box><size>15.45 0.225 1.125</size></box></geometry></collision>
         <visual name="south_v"><pose>0 -7.6125 0.5625 0 0 0</pose><geometry><box><size>15.45 0.225 1.125</size></box></geometry>
-          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material></visual>
+          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/thermal_wall.jpg</heat_signature>
+            <min_temp>292.0</min_temp>
+            <max_temp>310.0</max_temp>
+          </plugin>
+        </visual>
 
         <collision name="east_c"><pose>7.6125 0 0.5625 0 0 0</pose><geometry><box><size>0.225 15.45 1.125</size></box></geometry></collision>
         <visual name="east_v"><pose>7.6125 0 0.5625 0 0 0</pose><geometry><box><size>0.225 15.45 1.125</size></box></geometry>
-          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material></visual>
+          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/thermal_wall.jpg</heat_signature>
+            <min_temp>292.0</min_temp>
+            <max_temp>310.0</max_temp>
+          </plugin>
+        </visual>
 
         <collision name="west_c"><pose>-7.6125 0 0.5625 0 0 0</pose><geometry><box><size>0.225 15.45 1.125</size></box></geometry></collision>
         <visual name="west_v"><pose>-7.6125 0 0.5625 0 0 0</pose><geometry><box><size>0.225 15.45 1.125</size></box></geometry>
-          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material></visual>
+          <material><ambient>0.9 0.9 0.85 1</ambient><diffuse>0.9 0.9 0.85 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/thermal_wall.jpg</heat_signature>
+            <min_temp>292.0</min_temp>
+            <max_temp>310.0</max_temp>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -92,7 +122,11 @@
       <link name="link">
         <collision name="c"><geometry><box><size>0.75 0.75 0.75</size></box></geometry></collision>
         <visual name="v"><geometry><box><size>0.75 0.75 0.75</size></box></geometry>
-          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material></visual>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>298.0</temperature>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -101,7 +135,11 @@
       <link name="link">
         <collision name="c"><geometry><box><size>1.125 1.125 0.75</size></box></geometry></collision>
         <visual name="v"><geometry><box><size>1.125 1.125 0.75</size></box></geometry>
-          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material></visual>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>307.0</temperature>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -110,7 +148,11 @@
       <link name="link">
         <collision name="c"><geometry><box><size>1.5 0.75 0.75</size></box></geometry></collision>
         <visual name="v"><geometry><box><size>1.5 0.75 0.75</size></box></geometry>
-          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material></visual>
+          <material><ambient>0.4 0.4 0.4 1</ambient><diffuse>0.5 0.5 0.5 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>302.0</temperature>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -120,7 +162,11 @@
       <link name="link">
         <collision name="c"><geometry><cylinder><radius>0.375</radius><length>0.75</length></cylinder></geometry></collision>
         <visual name="v"><geometry><cylinder><radius>0.375</radius><length>0.75</length></cylinder></geometry>
-          <material><ambient>0.35 0.35 0.4 1</ambient><diffuse>0.45 0.45 0.5 1</diffuse></material></visual>
+          <material><ambient>0.35 0.35 0.4 1</ambient><diffuse>0.45 0.45 0.5 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>296.0</temperature>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -129,7 +175,11 @@
       <link name="link">
         <collision name="c"><geometry><cylinder><radius>0.3</radius><length>0.75</length></cylinder></geometry></collision>
         <visual name="v"><geometry><cylinder><radius>0.3</radius><length>0.75</length></cylinder></geometry>
-          <material><ambient>0.35 0.35 0.4 1</ambient><diffuse>0.45 0.45 0.5 1</diffuse></material></visual>
+          <material><ambient>0.35 0.35 0.4 1</ambient><diffuse>0.45 0.45 0.5 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>309.0</temperature>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -138,7 +188,11 @@
       <link name="link">
         <collision name="c"><geometry><cylinder><radius>0.45</radius><length>0.75</length></cylinder></geometry></collision>
         <visual name="v"><geometry><cylinder><radius>0.45</radius><length>0.75</length></cylinder></geometry>
-          <material><ambient>0.35 0.35 0.4 1</ambient><diffuse>0.45 0.45 0.5 1</diffuse></material></visual>
+          <material><ambient>0.35 0.35 0.4 1</ambient><diffuse>0.45 0.45 0.5 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <temperature>299.0</temperature>
+          </plugin>
+        </visual>
       </link>
     </model>
 
@@ -148,7 +202,14 @@
       <link name="link">
         <collision name="c"><geometry><box><size>3.75 0.15 0.75</size></box></geometry></collision>
         <visual name="v"><geometry><box><size>3.75 0.15 0.75</size></box></geometry>
-          <material><ambient>0.6 0.55 0.5 1</ambient><diffuse>0.7 0.65 0.6 1</diffuse></material></visual>
+          <material><ambient>0.6 0.55 0.5 1</ambient><diffuse>0.7 0.65 0.6 1</diffuse></material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/thermal_wall.jpg</heat_signature>
+            <min_temp>292.0</min_temp>
+            <max_temp>310.0</max_temp>
+          </plugin>
+
+        </visual>
       </link>
     </model>
 
@@ -186,6 +247,35 @@
           <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
             <temperature>280.0</temperature>
           </plugin></visual>
+      </link>
+    </model>
+
+    <model name="rescue_randy">
+      <static>true</static><pose>3.0 -0.8 0 0 0 1.5708</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><mesh><uri>model://itmr_description/worlds/assets/rescue_randy/meshes/rescue_randy.dae</uri></mesh></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><mesh><uri>model://itmr_description/worlds/assets/rescue_randy/meshes/rescue_randy.dae</uri></mesh></geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>1 1 1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://itmr_description/worlds/assets/rescue_randy/materials/textures/rescue_randy_albedo.png</albedo_map>
+                <normal_map>model://itmr_description/worlds/assets/rescue_randy/materials/textures/rescue_randy_normal.png</normal_map>
+                <metalness_map>model://itmr_description/worlds/assets/rescue_randy/materials/textures/rescue_randy_metalness.png</metalness_map>
+                <roughness_map>model://itmr_description/worlds/assets/rescue_randy/materials/textures/rescue_randy_roughness.png</roughness_map>
+              </metal>
+            </pbr>
+          </material>
+          <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
+            <heat_signature>model://itmr_description/worlds/assets/rescue_randy/materials/textures/RescueRandy_Thermal.png</heat_signature>
+            <min_temp>293.0</min_temp>
+            <max_temp>310.0</max_temp>
+          </plugin>
+        </visual>
       </link>
     </model>
 

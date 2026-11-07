@@ -57,7 +57,7 @@
                     <image>
                         <width>320</width>
                         <height>240</height>
-                        <format>L8</format>
+                        <format>L16</format>
                     </image>
                     <clip>
                         <near>0.1</near>
@@ -65,9 +65,9 @@
                     </clip>
                 </camera>
                 <plugin filename="gz-sim-thermal-sensor-system" name="gz::sim::systems::ThermalSensor">
-                    <min_temp>273.15</min_temp>
+                    <min_temp>253.15</min_temp>
                     <max_temp>400.0</max_temp>
-                    <resolution>1.6</resolution>
+                    <resolution>0.01</resolution>
                 </plugin>
             </sensor>
         </gazebo>

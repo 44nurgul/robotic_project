@@ -41,7 +41,6 @@
             </inertial>
         </link>
 
-        <!-- Kamerayı gövdenin ön yüzüne, ortaya bağlar (PCB üst kenarı gövdenin üst çizgisiyle aynı hizada) -->
         <joint name="camera_joint" type="fixed">
             <parent link="${parent}"/>
             <child link="camera_link"/>
@@ -57,7 +56,6 @@
             <origin xyz="0.0055 0 0" rpy="-1.570796327 0 -1.570796327"/>
         </joint>
 
-        <!-- Gazebo kamera sensörü eklentisi (RPi Camera Module 3 referans alınıştır: ~66° yatay FOV, 30 FPS) -->
         <gazebo reference="camera_link">
             <sensor name="rpicam_module3" type="camera">
                 <always_on>true</always_on>

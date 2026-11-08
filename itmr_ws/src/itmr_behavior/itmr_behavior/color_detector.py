@@ -8,9 +8,9 @@ from std_msgs.msg import String
 # HSV araliklari (OpenCV: H 0-179, S 0-255, V 0-255)
 # Kirmizi, HSV'de H=0 etrafinda sarildigi icin iki aralik gerekir.
 COLOR_RANGES = {
-    'KIRMIZI': [((0, 120, 70), (10, 255, 255)), ((170, 120, 70), (179, 255, 255))],
-    'YESIL': [((40, 80, 50), (85, 255, 255))],
-    'MAVI': [((100, 120, 50), (130, 255, 255))],
+    'RED': [((0, 120, 70), (10, 255, 255)), ((170, 120, 70), (179, 255, 255))],
+    'GREEN': [((40, 80, 50), (85, 255, 255))],
+    'BLUE': [((100, 120, 50), (130, 255, 255))],
 }
 
 
@@ -36,7 +36,7 @@ class ColorDetector(Node):
 
     def image_callback(self, msg):
         if msg.encoding != 'rgb8':
-            self.get_logger().warn(f'Beklenmeyen format: {msg.encoding} (rgb8 bekleniyordu)',
+            self.get_logger().warn(f'Unexpected format: {msg.encoding} (expected rgb8)',
                                    throttle_duration_sec=5.0)
             return
 
@@ -59,7 +59,7 @@ class ColorDetector(Node):
     def report(self):
         for name in sorted(self.seen):
             self.counts[name] = self.counts.get(name, 0) + 1
-            text = f'{name} renkte nesne goruldu ({self.counts[name]})'
+            text = f'{name} object detected ({self.counts[name]})'
             self.get_logger().info(text)
             self.color_pub.publish(String(data=text))
         self.seen.clear()

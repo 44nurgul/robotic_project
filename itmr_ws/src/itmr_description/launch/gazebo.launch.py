@@ -114,6 +114,16 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration("behavior"))
     )
 
+    # Renk tespiti: robot ile birlikte her zaman baslar
+    color_detector = Node(
+        package="itmr_behavior",
+        executable="color_detector",
+        output="screen",
+        parameters=[{
+            "use_sim_time": True
+        }]
+    )
+
     return LaunchDescription([
         behavior_arg,
         robot_state_publisher,
@@ -122,5 +132,6 @@ def generate_launch_description():
         spawn_robot,
         bridge,
         rviz,
-        obstacle_avoider
+        obstacle_avoider,
+        color_detector
     ])

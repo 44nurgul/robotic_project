@@ -19,6 +19,7 @@ setup(
     entry_points={
         'console_scripts': [
             'obstacle_avoider = itmr_behavior.obstacle_avoider:main',
+            'color_detector = itmr_behavior.color_detector:main',
         ],
     },
 )

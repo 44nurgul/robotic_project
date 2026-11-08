@@ -22,6 +22,8 @@
   <!-- IMU görselleştirme: RViz Imu display ve zaman grafiği -->
   <exec_depend>rviz_imu_plugin</exec_depend>
   <exec_depend>rqt_plot</exec_depend>
+  <!-- gazebo.launch.py behavior:=true ile engelden kacinma node'unu baslatir -->
+  <exec_depend>itmr_behavior</exec_depend>
 
 
   <export>

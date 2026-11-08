@@ -1,8 +1,10 @@
 import os
 
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, AppendEnvironmentVariable
+from launch.actions import IncludeLaunchDescription, AppendEnvironmentVariable, DeclareLaunchArgument
+from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
@@ -95,11 +97,30 @@ def generate_launch_description():
         }]
     )
 
+    # Engelden kacinma davranisi: sadece "behavior:=true" verilirse baslar
+    behavior_arg = DeclareLaunchArgument(
+        "behavior",
+        default_value="false",
+        description="true ise obstacle_avoider node'u da baslatilir"
+    )
+
+    obstacle_avoider = Node(
+        package="itmr_behavior",
+        executable="obstacle_avoider",
+        output="screen",
+        parameters=[{
+            "use_sim_time": True
+        }],
+        condition=IfCondition(LaunchConfiguration("behavior"))
+    )
+
     return LaunchDescription([
+        behavior_arg,
         robot_state_publisher,
         gz_resource_path,
         gazebo,
         spawn_robot,
         bridge,
-        rviz
+        rviz,
+        obstacle_avoider
     ])

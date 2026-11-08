@@ -124,8 +124,24 @@ def generate_launch_description():
         }]
     )
 
+    # IMU grafigi: z ekseni acisal hiz ve x ivmesi. Kapatmak icin "imu_plot:=false"
+    imu_plot_arg = DeclareLaunchArgument(
+        "imu_plot",
+        default_value="true",
+        description="true ise IMU icin rqt_plot penceresi acilir"
+    )
+
+    imu_plot = Node(
+        package="rqt_plot",
+        executable="rqt_plot",
+        arguments=["/imu/angular_velocity/z", "/imu/linear_acceleration/x"],
+        condition=IfCondition(LaunchConfiguration("imu_plot"))
+    )
+
     return LaunchDescription([
         behavior_arg,
+        imu_plot_arg,
+        imu_plot,
         robot_state_publisher,
         gz_resource_path,
         gazebo,

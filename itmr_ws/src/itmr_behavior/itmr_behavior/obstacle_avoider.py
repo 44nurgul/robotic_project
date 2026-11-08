@@ -14,7 +14,7 @@ class ObstacleAvoider(Node):
     def __init__(self):
         super().__init__('obstacle_avoider')
 
-        self.declare_parameter('obstacle_threshold', 1)  # bundan yakinsa donmeye basla (m)
+        self.declare_parameter('obstacle_threshold', 1.0)  # bundan yakinsa donmeye basla (m)
         self.declare_parameter('clear_distance', 1.4)      # on bundan uzaksa tekrar duz git (m)
         self.declare_parameter('forward_speed', 0.25)      # m/s
         self.declare_parameter('turn_speed', 0.8)          # rad/s

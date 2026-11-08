@@ -56,10 +56,10 @@ class ObstacleAvoider(Node):
             self.turn_dir = 1.0 if left >= right else -1.0
             side = 'LEFT' if self.turn_dir > 0 else 'RIGHT'
             self.get_logger().info(
-                f'Engel! front={front:.2f} m -> TURN {side} (left={left:.2f}, right={right:.2f})')
+                f'Obstacle! front={front:.2f} m -> TURN {side} (left={left:.2f}, right={right:.2f})')
         elif self.state == 'TURN' and front > clear_distance:
             self.state = 'FORWARD'
-            self.get_logger().info(f'Yol acik: front={front:.2f} m -> FORWARD')
+            self.get_logger().info(f'Path clear: front={front:.2f} m -> FORWARD')
 
         cmd = Twist()
         if self.state == 'FORWARD':

@@ -198,10 +198,10 @@
 
     <!-- Ic duvar parcasi: duvar takibi ve LiDAR icin duz yuzey -->
     <model name="inner_wall">
-      <static>true</static><pose>1.5 -5.625 0.375 0 0 0</pose>
+      <static>true</static><pose>1.2 -5.0 0.375 0 0 0</pose>
       <link name="link">
-        <collision name="c"><geometry><box><size>3.75 0.15 0.75</size></box></geometry></collision>
-        <visual name="v"><geometry><box><size>3.75 0.15 0.75</size></box></geometry>
+        <collision name="c"><geometry><box><size>3.0 0.15 0.75</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>3.0 0.15 0.75</size></box></geometry>
           <material><ambient>0.6 0.55 0.5 1</ambient><diffuse>0.7 0.65 0.6 1</diffuse></material>
           <plugin filename="gz-sim-thermal-system" name="gz::sim::systems::Thermal">
             <heat_signature>model://itmr_description/worlds/assets/thermal_wall.jpg</heat_signature>
